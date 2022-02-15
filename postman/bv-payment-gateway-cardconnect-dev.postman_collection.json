@@ -1,0 +1,2125 @@
+{
+	"info": {
+		"_postman_id": "8ece39ab-62db-4239-9e89-6ccb32f587e7",
+		"name": "bv-payment-gateway-cardconnect-dev",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Payment Gateway API Test",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://dev-svc.bluevolt.io:8443/paymentGateway/test",
+					"protocol": "https",
+					"host": [
+						"dev-svc",
+						"bluevolt",
+						"io"
+					],
+					"port": "8443",
+					"path": [
+						"paymentGateway",
+						"test"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CardConnect Payment Approval",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "BVMeta",
+						"value": "{\"transactionId\": \"7c53a3c9-5be7-4480-bb9c-d4e21e495e85\", \"universityId\": 3245, \"userId\": 1749459}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"gatewayTypeId\":2,\"gatewayTypeName\":\"CardConnect\",\"merchantAccountId\":67,\"credentials\":{\"username\":\"testing\",\"password\":\"testing123\",\"merchantId\":\"800000005052\"},\"account\":\"4788250000121443\",\"expDate\":\"0225\",\"amount\":2000.00,\"name\":\"Dustin Sale\",\"street\":\"1600 Allwood Ave\",\"city\":\"Murfreesboro\",\"state\":\"TN\",\"zip\":\"37128\",\"country\":\"US\",\"comment\":\"\",\"userName\":\"dustin.sale@bluevolt.com\",\"userId\":1646436,\"cvv2\":\"123\",\"currencyType\":840}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dev-svc.bluevolt.io:8443/paymentGateway/processPayment",
+					"protocol": "https",
+					"host": [
+						"dev-svc",
+						"bluevolt",
+						"io"
+					],
+					"port": "8443",
+					"path": [
+						"paymentGateway",
+						"processPayment"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "CardConnect Payment Approval Example 1",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "BVMeta",
+								"value": "{\"transactionId\": \"7c53a3c9-5be7-4480-bb9c-d4e21e495e85\", \"universityId\": 3245, \"userId\": 1749459}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"gatewayTypeId\":2,\"gatewayTypeName\":\"CardConnect\",\"merchantAccountId\":67,\"credentials\":{\"username\":\"testing\",\"password\":\"testing123\",\"merchantId\":\"496160873888\"},\"account\":\"4788250000121443\",\"expDate\":\"0225\",\"amount\":2000.00,\"name\":\"Dustin Sale\",\"street\":\"1600 Allwood Ave\",\"city\":\"Murfreesboro\",\"state\":\"TN\",\"zip\":\"37128\",\"country\":\"US\",\"comment\":\"\",\"userName\":\"dustin.sale@bluevolt.com\",\"userId\":1646436,\"cvv2\":\"123\",\"currencyType\":840}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://40.86.168.47:8082/paymentGateway/processPayment",
+							"protocol": "http",
+							"host": [
+								"40",
+								"86",
+								"168",
+								"47"
+							],
+							"port": "8082",
+							"path": [
+								"paymentGateway",
+								"processPayment"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Fri, 17 Dec 2021 20:12:50 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "190"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"detail\": {\n        \"success\": true,\n        \"paymentTransactionId\": \"351207054771\",\n        \"statusCode\": 200,\n        \"gatewayHttpStatusCode\": 200,\n        \"responseMessage\": \"Success.\",\n        \"merchantAccountId\": 67,\n        \"responseDetail\": \"Success.\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "CardConnect Payment Decline  - Refer to Issuer C",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "BVMeta",
+						"value": "{\"transactionId\": \"7c53a3c9-5be7-4480-bb9c-d4e21e495e85\", \"universityId\": 3245, \"userId\": 1749459}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"gatewayTypeId\":2,\"gatewayTypeName\":\"CardConnect\",\"merchantAccountId\":67,\"credentials\":{\"username\":\"testing\",\"password\":\"testing123\",\"merchantId\":\"800000005052\"},\"account\":\"4387751111111020\",\"expDate\":\"0225\",\"amount\":1.99,\"name\":\"Dustin Sale\",\"street\":\"1600 Allwood Ave\",\"city\":\"Murfreesboro\",\"state\":\"TN\",\"zip\":\"37128\",\"country\":\"US\",\"comment\":\"\",\"userName\":\"dustin.sale@bluevolt.com\",\"userId\":1646436,\"cvv2\":\"123\",\"currencyType\":840}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dev-svc.bluevolt.io:8443/paymentGateway/processPayment",
+					"protocol": "https",
+					"host": [
+						"dev-svc",
+						"bluevolt",
+						"io"
+					],
+					"port": "8443",
+					"path": [
+						"paymentGateway",
+						"processPayment"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "CardConnect Payment Decline  - Refer to Issuer C Example 1",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "BVMeta",
+								"value": "{\"transactionId\": \"7c53a3c9-5be7-4480-bb9c-d4e21e495e85\", \"universityId\": 3245, \"userId\": 1749459}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"gatewayTypeId\":2,\"gatewayTypeName\":\"CardConnect\",\"merchantAccountId\":67,\"credentials\":{\"username\":\"testing\",\"password\":\"testing123\",\"merchantId\":\"496160873888\"},\"account\":\"4387751111111020\",\"expDate\":\"0225\",\"amount\":1.99,\"name\":\"Dustin Sale\",\"street\":\"1600 Allwood Ave\",\"city\":\"Murfreesboro\",\"state\":\"TN\",\"zip\":\"37128\",\"country\":\"US\",\"comment\":\"\",\"userName\":\"dustin.sale@bluevolt.com\",\"userId\":1646436,\"cvv2\":\"123\",\"currencyType\":840}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://40.86.168.47:8082/paymentGateway/processPayment",
+							"protocol": "http",
+							"host": [
+								"40",
+								"86",
+								"168",
+								"47"
+							],
+							"port": "8082",
+							"path": [
+								"paymentGateway",
+								"processPayment"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Fri, 17 Dec 2021 20:14:19 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "251"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"detail\": {\n        \"success\": false,\n        \"paymentTransactionId\": \"351539154860\",\n        \"statusCode\": 400,\n        \"gatewayHttpStatusCode\": 400,\n        \"responseMessage\": \"Authorization failed. Refer to issuer.\",\n        \"merchantAccountId\": 67,\n        \"responseDetail\": \"Authorization failed. Refer to issuer.\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "CardConnect Payment Decline  - Do not Honor C",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "BVMeta",
+						"value": "{\"transactionId\": \"7c53a3c9-5be7-4480-bb9c-d4e21e495e85\", \"universityId\": 3245, \"userId\": 1749459}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"gatewayTypeId\":2,\"gatewayTypeName\":\"CardConnect\",\"merchantAccountId\":67,\"credentials\":{\"username\":\"testing\",\"password\":\"testing123\",\"merchantId\":\"800000005052\"},\"account\":\"4387751111111038\",\"expDate\":\"0225\",\"amount\":1.99,\"name\":\"Dustin Sale\",\"street\":\"1600 Allwood Ave\",\"city\":\"Murfreesboro\",\"state\":\"TN\",\"zip\":\"37128\",\"country\":\"US\",\"comment\":\"\",\"userName\":\"dustin.sale@bluevolt.com\",\"userId\":1646436,\"cvv2\":\"123\",\"currencyType\":840}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dev-svc.bluevolt.io:8443/paymentGateway/processPayment",
+					"protocol": "https",
+					"host": [
+						"dev-svc",
+						"bluevolt",
+						"io"
+					],
+					"port": "8443",
+					"path": [
+						"paymentGateway",
+						"processPayment"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "CardConnect Payment Decline  - Do not Honor C Example 1",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "BVMeta",
+								"value": "{\"transactionId\": \"7c53a3c9-5be7-4480-bb9c-d4e21e495e85\", \"universityId\": 3245, \"userId\": 1749459}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"gatewayTypeId\":2,\"gatewayTypeName\":\"CardConnect\",\"merchantAccountId\":67,\"credentials\":{\"username\":\"testing\",\"password\":\"testing123\",\"merchantId\":\"496160873888\"},\"account\":\"4387751111111038\",\"expDate\":\"0225\",\"amount\":1.99,\"name\":\"Dustin Sale\",\"street\":\"1600 Allwood Ave\",\"city\":\"Murfreesboro\",\"state\":\"TN\",\"zip\":\"37128\",\"country\":\"US\",\"comment\":\"\",\"userName\":\"dustin.sale@bluevolt.com\",\"userId\":1646436,\"cvv2\":\"123\",\"currencyType\":840}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://40.86.168.47:8082/paymentGateway/processPayment",
+							"protocol": "http",
+							"host": [
+								"40",
+								"86",
+								"168",
+								"47"
+							],
+							"port": "8082",
+							"path": [
+								"paymentGateway",
+								"processPayment"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Fri, 17 Dec 2021 20:14:33 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "245"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"detail\": {\n        \"success\": false,\n        \"paymentTransactionId\": \"351233054874\",\n        \"statusCode\": 400,\n        \"gatewayHttpStatusCode\": 400,\n        \"responseMessage\": \"Authorization failed. Do not honor.\",\n        \"merchantAccountId\": 67,\n        \"responseDetail\": \"Authorization failed. Do not honor.\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "CardConnect Payment Decline  - Wrong expiration C",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "BVMeta",
+						"value": "{\"transactionId\": \"7c53a3c9-5be7-4480-bb9c-d4e21e495e85\", \"universityId\": 3245, \"userId\": 1749459}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"gatewayTypeId\":2,\"gatewayTypeName\":\"CardConnect\",\"merchantAccountId\":67,\"credentials\":{\"username\":\"testing\",\"password\":\"testing123\",\"merchantId\":\"800000005052\"},\"account\":\"5442981111111049\",\"expDate\":\"0525\",\"amount\":1.99,\"name\":\"Dustin Sale\",\"street\":\"1600 Allwood Ave\",\"city\":\"Murfreesboro\",\"state\":\"TN\",\"zip\":\"37128\",\"country\":\"US\",\"comment\":\"\",\"userName\":\"dustin.sale@bluevolt.com\",\"userId\":1646436,\"cvv2\":\"123\",\"currencyType\":840}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dev-svc.bluevolt.io:8443/paymentGateway/processPayment",
+					"protocol": "https",
+					"host": [
+						"dev-svc",
+						"bluevolt",
+						"io"
+					],
+					"port": "8443",
+					"path": [
+						"paymentGateway",
+						"processPayment"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "CardConnect Payment Decline  - Wrong expiration C Example 1",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "BVMeta",
+								"value": "{\"transactionId\": \"7c53a3c9-5be7-4480-bb9c-d4e21e495e85\", \"universityId\": 3245, \"userId\": 1749459}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"gatewayTypeId\":2,\"gatewayTypeName\":\"CardConnect\",\"merchantAccountId\":67,\"credentials\":{\"username\":\"testing\",\"password\":\"testing123\",\"merchantId\":\"496160873888\"},\"account\":\"5442981111111049\",\"expDate\":\"0525\",\"amount\":1.99,\"name\":\"Dustin Sale\",\"street\":\"1600 Allwood Ave\",\"city\":\"Murfreesboro\",\"state\":\"TN\",\"zip\":\"37128\",\"country\":\"US\",\"comment\":\"\",\"userName\":\"dustin.sale@bluevolt.com\",\"userId\":1646436,\"cvv2\":\"123\",\"currencyType\":840}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://40.86.168.47:8082/paymentGateway/processPayment",
+							"protocol": "http",
+							"host": [
+								"40",
+								"86",
+								"168",
+								"47"
+							],
+							"port": "8082",
+							"path": [
+								"paymentGateway",
+								"processPayment"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Fri, 17 Dec 2021 20:15:13 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "253"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"detail\": {\n        \"success\": false,\n        \"paymentTransactionId\": \"351557154914\",\n        \"statusCode\": 400,\n        \"gatewayHttpStatusCode\": 400,\n        \"responseMessage\": \"Authorization failed. Wrong expiration.\",\n        \"merchantAccountId\": 67,\n        \"responseDetail\": \"Authorization failed. Wrong expiration.\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "CardConnect Payment Decline  - Insufficient Funds C",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "BVMeta",
+						"value": "{\"transactionId\": \"7c53a3c9-5be7-4480-bb9c-d4e21e495e85\", \"universityId\": 3245, \"userId\": 1749459}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"gatewayTypeId\":2,\"gatewayTypeName\":\"CardConnect\",\"merchantAccountId\":67,\"credentials\":{\"username\":\"testing\",\"password\":\"testing123\",\"merchantId\":\"800000005052\"},\"account\":\"5442981111111056\",\"expDate\":\"0125\",\"amount\":1.99,\"name\":\"Dustin Sale\",\"street\":\"1600 Allwood Ave\",\"city\":\"Murfreesboro\",\"state\":\"TN\",\"zip\":\"37128\",\"country\":\"US\",\"comment\":\"\",\"userName\":\"dustin.sale@bluevolt.com\",\"userId\":1646436,\"cvv2\":\"123\",\"currencyType\":840}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dev-svc.bluevolt.io:8443/paymentGateway/processPayment",
+					"protocol": "https",
+					"host": [
+						"dev-svc",
+						"bluevolt",
+						"io"
+					],
+					"port": "8443",
+					"path": [
+						"paymentGateway",
+						"processPayment"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "CardConnect Payment Decline  - Insufficient Funds C Example 1",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "BVMeta",
+								"value": "{\"transactionId\": \"7c53a3c9-5be7-4480-bb9c-d4e21e495e85\", \"universityId\": 3245, \"userId\": 1749459}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"gatewayTypeId\":2,\"gatewayTypeName\":\"CardConnect\",\"merchantAccountId\":67,\"credentials\":{\"username\":\"testing\",\"password\":\"testing123\",\"merchantId\":\"496160873888\"},\"account\":\"5442981111111056\",\"expDate\":\"0125\",\"amount\":1.99,\"name\":\"Dustin Sale\",\"street\":\"1600 Allwood Ave\",\"city\":\"Murfreesboro\",\"state\":\"TN\",\"zip\":\"37128\",\"country\":\"US\",\"comment\":\"\",\"userName\":\"dustin.sale@bluevolt.com\",\"userId\":1646436,\"cvv2\":\"123\",\"currencyType\":840}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://40.86.168.47:8082/paymentGateway/processPayment",
+							"protocol": "http",
+							"host": [
+								"40",
+								"86",
+								"168",
+								"47"
+							],
+							"port": "8082",
+							"path": [
+								"paymentGateway",
+								"processPayment"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Fri, 17 Dec 2021 20:15:32 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "257"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"detail\": {\n        \"success\": false,\n        \"paymentTransactionId\": \"351560154933\",\n        \"statusCode\": 400,\n        \"gatewayHttpStatusCode\": 400,\n        \"responseMessage\": \"Authorization failed. Insufficient funds.\",\n        \"merchantAccountId\": 67,\n        \"responseDetail\": \"Authorization failed. Insufficient funds.\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "CardConnect Payment Decline  - Visa Time Out B",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "BVMeta",
+						"value": "{\"transactionId\": \"7c53a3c9-5be7-4480-bb9c-d4e21e495e85\", \"universityId\": 3245, \"userId\": 1749459}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"gatewayTypeId\":2,\"gatewayTypeName\":\"CardConnect\",\"merchantAccountId\":67,\"credentials\":{\"username\":\"testing\",\"password\":\"testing123\",\"merchantId\":\"800000005052\"},\"account\":\"4999006200620062\",\"expDate\":\"0125\",\"amount\":1.99,\"name\":\"Dustin Sale\",\"street\":\"1600 Allwood Ave\",\"city\":\"Murfreesboro\",\"state\":\"TN\",\"zip\":\"37128\",\"country\":\"US\",\"comment\":\"\",\"userName\":\"dustin.sale@bluevolt.com\",\"userId\":1646436,\"cvv2\":\"123\",\"currencyType\":840}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dev-svc.bluevolt.io:8443/paymentGateway/processPayment",
+					"protocol": "https",
+					"host": [
+						"dev-svc",
+						"bluevolt",
+						"io"
+					],
+					"port": "8443",
+					"path": [
+						"paymentGateway",
+						"processPayment"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "CardConnect Payment Decline  - Visa Time Out B Example 1",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "BVMeta",
+								"value": "{\"transactionId\": \"7c53a3c9-5be7-4480-bb9c-d4e21e495e85\", \"universityId\": 3245, \"userId\": 1749459}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"gatewayTypeId\":2,\"gatewayTypeName\":\"CardConnect\",\"merchantAccountId\":67,\"credentials\":{\"username\":\"testing\",\"password\":\"testing123\",\"merchantId\":\"496160873888\"},\"account\":\"4999006200620062\",\"expDate\":\"0125\",\"amount\":1.99,\"name\":\"Dustin Sale\",\"street\":\"1600 Allwood Ave\",\"city\":\"Murfreesboro\",\"state\":\"TN\",\"zip\":\"37128\",\"country\":\"US\",\"comment\":\"\",\"userName\":\"dustin.sale@bluevolt.com\",\"userId\":1646436,\"cvv2\":\"123\",\"currencyType\":840}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://40.86.168.47:8082/paymentGateway/processPayment",
+							"protocol": "http",
+							"host": [
+								"40",
+								"86",
+								"168",
+								"47"
+							],
+							"port": "8082",
+							"path": [
+								"paymentGateway",
+								"processPayment"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Fri, 17 Dec 2021 19:46:44 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "247"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"detail\": {\n        \"success\": false,\n        \"paymentTransactionId\": \"351484753208\",\n        \"statusCode\": 400,\n        \"gatewayHttpStatusCode\": 400,\n        \"responseMessage\": \"Please retry the request. Timed out.\",\n        \"merchantAccountId\": 67,\n        \"responseDetail\": \"Please retry the request. Timed out.\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "CardConnect Payment Decline  - MC Time Out B",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "BVMeta",
+						"value": "{\"transactionId\": \"7c53a3c9-5be7-4480-bb9c-d4e21e495e85\", \"universityId\": 3245, \"userId\": 1749459}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"gatewayTypeId\":2,\"gatewayTypeName\":\"CardConnect\",\"merchantAccountId\":67,\"credentials\":{\"username\":\"testing\",\"password\":\"testing123\",\"merchantId\":\"800000005052\"},\"account\":\"5111006200620062\",\"expDate\":\"0125\",\"amount\":1.99,\"name\":\"Dustin Sale\",\"street\":\"1600 Allwood Ave\",\"city\":\"Murfreesboro\",\"state\":\"TN\",\"zip\":\"37128\",\"country\":\"US\",\"comment\":\"\",\"userName\":\"dustin.sale@bluevolt.com\",\"userId\":1646436,\"cvv2\":\"123\",\"currencyType\":840}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dev-svc.bluevolt.io:8443/paymentGateway/processPayment",
+					"protocol": "https",
+					"host": [
+						"dev-svc",
+						"bluevolt",
+						"io"
+					],
+					"port": "8443",
+					"path": [
+						"paymentGateway",
+						"processPayment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CardConnect Payment Decline  - Discover Time Out B",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "BVMeta",
+						"value": "{\"transactionId\": \"7c53a3c9-5be7-4480-bb9c-d4e21e495e85\", \"universityId\": 3245, \"userId\": 1749459}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"gatewayTypeId\":2,\"gatewayTypeName\":\"CardConnect\",\"merchantAccountId\":67,\"credentials\":{\"username\":\"testing\",\"password\":\"testing123\",\"merchantId\":\"800000005052\"},\"account\":\"6465006200620062\",\"expDate\":\"0125\",\"amount\":1.99,\"name\":\"Dustin Sale\",\"street\":\"1600 Allwood Ave\",\"city\":\"Murfreesboro\",\"state\":\"TN\",\"zip\":\"37128\",\"country\":\"US\",\"comment\":\"\",\"userName\":\"dustin.sale@bluevolt.com\",\"userId\":1646436,\"cvv2\":\"123\",\"currencyType\":840}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dev-svc.bluevolt.io:8443/paymentGateway/processPayment",
+					"protocol": "https",
+					"host": [
+						"dev-svc",
+						"bluevolt",
+						"io"
+					],
+					"port": "8443",
+					"path": [
+						"paymentGateway",
+						"processPayment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CardConnect Payment AUTH 401 Error (Bad Username)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "BVMeta",
+						"value": "{\"transactionId\": \"7c53a3c9-5be7-4480-bb9c-d4e21e495e85\", \"universityId\": 3245, \"userId\": 1749459}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"gatewayTypeId\":2,\"gatewayTypeName\":\"CardConnect\",\"merchantAccountId\":67,\"credentials\":{\"username\":\"testin\",\"password\":\"testing123\",\"merchantId\":\"800000005052\"},\"account\":\"4788250000121443\",\"expDate\":\"0225\",\"amount\":2000.00,\"name\":\"Dustin Sale\",\"street\":\"1600 Allwood Ave\",\"city\":\"Murfreesboro\",\"state\":\"TN\",\"zip\":\"37128\",\"country\":\"US\",\"comment\":\"\",\"userName\":\"dustin.sale@bluevolt.com\",\"userId\":1646436,\"cvv2\":\"123\",\"currencyType\":840}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dev-svc.bluevolt.io:8443/paymentGateway/processPayment",
+					"protocol": "https",
+					"host": [
+						"dev-svc",
+						"bluevolt",
+						"io"
+					],
+					"port": "8443",
+					"path": [
+						"paymentGateway",
+						"processPayment"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "CardConnect Payment AUTH 401 Error (Bad Username) Example 1",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "BVMeta",
+								"value": "{\"transactionId\": \"7c53a3c9-5be7-4480-bb9c-d4e21e495e85\", \"universityId\": 3245, \"userId\": 1749459}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"gatewayTypeId\":2,\"gatewayTypeName\":\"CardConnect\",\"merchantAccountId\":67,\"credentials\":{\"username\":\"testin\",\"password\":\"testing123\",\"merchantId\":\"496160873888\"},\"account\":\"4788250000121443\",\"expDate\":\"0225\",\"amount\":2000.00,\"name\":\"Dustin Sale\",\"street\":\"1600 Allwood Ave\",\"city\":\"Murfreesboro\",\"state\":\"TN\",\"zip\":\"37128\",\"country\":\"US\",\"comment\":\"\",\"userName\":\"dustin.sale@bluevolt.com\",\"userId\":1646436,\"cvv2\":\"123\",\"currencyType\":840}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://40.86.168.47:8082/paymentGateway/processPayment",
+							"protocol": "http",
+							"host": [
+								"40",
+								"86",
+								"168",
+								"47"
+							],
+							"port": "8082",
+							"path": [
+								"paymentGateway",
+								"processPayment"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Fri, 17 Dec 2021 20:08:30 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "267"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"detail\": {\n        \"success\": false,\n        \"paymentTransactionId\": null,\n        \"statusCode\": 401,\n        \"gatewayHttpStatusCode\": 401,\n        \"responseMessage\": \"There was an authorization error with your request.\",\n        \"merchantAccountId\": 67,\n        \"responseDetail\": \"There was an authorization error with your request.\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "CardConnect Payment AUTH 401 Error (Bad Password)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "BVMeta",
+						"value": "{\"transactionId\": \"7c53a3c9-5be7-4480-bb9c-d4e21e495e85\", \"universityId\": 3245, \"userId\": 1749459}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"gatewayTypeId\":2,\"gatewayTypeName\":\"CardConnect\",\"merchantAccountId\":67,\"credentials\":{\"username\":\"testing\",\"password\":\"testing12\",\"merchantId\":\"800000005052\"},\"account\":\"4788250000121443\",\"expDate\":\"0225\",\"amount\":2000.00,\"name\":\"Dustin Sale\",\"street\":\"1600 Allwood Ave\",\"city\":\"Murfreesboro\",\"state\":\"TN\",\"zip\":\"37128\",\"country\":\"US\",\"comment\":\"\",\"userName\":\"dustin.sale@bluevolt.com\",\"userId\":1646436,\"cvv2\":\"123\",\"currencyType\":840}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dev-svc.bluevolt.io:8443/paymentGateway/processPayment",
+					"protocol": "https",
+					"host": [
+						"dev-svc",
+						"bluevolt",
+						"io"
+					],
+					"port": "8443",
+					"path": [
+						"paymentGateway",
+						"processPayment"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "CardConnect Payment AUTH 401 Error (Bad Password) Example 1",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "BVMeta",
+								"value": "{\"transactionId\": \"7c53a3c9-5be7-4480-bb9c-d4e21e495e85\", \"universityId\": 3245, \"userId\": 1749459}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"gatewayTypeId\":2,\"gatewayTypeName\":\"CardConnect\",\"merchantAccountId\":67,\"credentials\":{\"username\":\"testing\",\"password\":\"testing12\",\"merchantId\":\"496160873888\"},\"account\":\"4788250000121443\",\"expDate\":\"0225\",\"amount\":2000.00,\"name\":\"Dustin Sale\",\"street\":\"1600 Allwood Ave\",\"city\":\"Murfreesboro\",\"state\":\"TN\",\"zip\":\"37128\",\"country\":\"US\",\"comment\":\"\",\"userName\":\"dustin.sale@bluevolt.com\",\"userId\":1646436,\"cvv2\":\"123\",\"currencyType\":840}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://40.86.168.47:8082/paymentGateway/processPayment",
+							"protocol": "http",
+							"host": [
+								"40",
+								"86",
+								"168",
+								"47"
+							],
+							"port": "8082",
+							"path": [
+								"paymentGateway",
+								"processPayment"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Fri, 17 Dec 2021 20:03:15 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "267"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"detail\": {\n        \"success\": false,\n        \"paymentTransactionId\": null,\n        \"statusCode\": 401,\n        \"gatewayHttpStatusCode\": 401,\n        \"responseMessage\": \"There was an authorization error with your request.\",\n        \"merchantAccountId\": 67,\n        \"responseDetail\": \"There was an authorization error with your request.\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "CardConnect Payment AUTH 401 Error (Bad MerchantId)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "BVMeta",
+						"value": "{\"transactionId\": \"7c53a3c9-5be7-4480-bb9c-d4e21e495e85\", \"universityId\": 3245, \"userId\": 1749459}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"gatewayTypeId\":2,\"gatewayTypeName\":\"CardConnect\",\"merchantAccountId\":67,\"credentials\":{\"username\":\"testing\",\"password\":\"testing123\",\"merchantId\":\"80000000505\"},\"account\":\"4788250000121443\",\"expDate\":\"0225\",\"amount\":2000.00,\"name\":\"Dustin Sale\",\"street\":\"1600 Allwood Ave\",\"city\":\"Murfreesboro\",\"state\":\"TN\",\"zip\":\"37128\",\"country\":\"US\",\"comment\":\"\",\"userName\":\"dustin.sale@bluevolt.com\",\"userId\":1646436,\"cvv2\":\"123\",\"currencyType\":840}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dev-svc.bluevolt.io:8443/paymentGateway/processPayment",
+					"protocol": "https",
+					"host": [
+						"dev-svc",
+						"bluevolt",
+						"io"
+					],
+					"port": "8443",
+					"path": [
+						"paymentGateway",
+						"processPayment"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "CardConnect Payment AUTH 401 Error (Bad MerchantId) Example 1",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "BVMeta",
+								"value": "{\"transactionId\": \"7c53a3c9-5be7-4480-bb9c-d4e21e495e85\", \"universityId\": 3245, \"userId\": 1749459}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"gatewayTypeId\":2,\"gatewayTypeName\":\"CardConnect\",\"merchantAccountId\":67,\"credentials\":{\"username\":\"testing\",\"password\":\"testing123\",\"merchantId\":\"49616087388\"},\"account\":\"4788250000121443\",\"expDate\":\"0225\",\"amount\":2000.00,\"name\":\"Dustin Sale\",\"street\":\"1600 Allwood Ave\",\"city\":\"Murfreesboro\",\"state\":\"TN\",\"zip\":\"37128\",\"country\":\"US\",\"comment\":\"\",\"userName\":\"dustin.sale@bluevolt.com\",\"userId\":1646436,\"cvv2\":\"123\",\"currencyType\":840}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://40.86.168.47:8082/paymentGateway/processPayment",
+							"protocol": "http",
+							"host": [
+								"40",
+								"86",
+								"168",
+								"47"
+							],
+							"port": "8082",
+							"path": [
+								"paymentGateway",
+								"processPayment"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Fri, 17 Dec 2021 20:16:14 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "267"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"detail\": {\n        \"success\": false,\n        \"paymentTransactionId\": null,\n        \"statusCode\": 401,\n        \"gatewayHttpStatusCode\": 401,\n        \"responseMessage\": \"There was an authorization error with your request.\",\n        \"merchantAccountId\": 67,\n        \"responseDetail\": \"There was an authorization error with your request.\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "CardConnect Refund",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "BVMeta",
+						"value": "{\"transactionId\": \"7c53a3c9-5be7-4480-bb9c-d4e21e495e85\", \"universityId\": 3245, \"userId\": 1749459}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"gatewayTypeId\":2,\"gatewayTypeName\":\"CardConnect\",\"merchantAccountId\":67,\"credentials\":{\"username\":\"testing\",\"password\":\"testing123\",\"merchantId\":\"800000005052\"},\"paymentTransactionId\":\"354901742699\",\"comment\":\"Dustin Paid Course Test CardConnect\",\"amount\":\"2000\",\"maskedCardNumber\":\"4788XXXXXXXX1443\",\"currencyType\":840,\"userId\":1646436}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dev-svc.bluevolt.io:8443/paymentGateway/processRefund",
+					"protocol": "https",
+					"host": [
+						"dev-svc",
+						"bluevolt",
+						"io"
+					],
+					"port": "8443",
+					"path": [
+						"paymentGateway",
+						"processRefund"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "CardConnect Refund Success Example 1",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "BVMeta",
+								"value": "{\"transactionId\": \"7c53a3c9-5be7-4480-bb9c-d4e21e495e85\", \"universityId\": 3245, \"userId\": 1749459}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"gatewayTypeId\":2,\"gatewayTypeName\":\"CardConnect\",\"merchantAccountId\":67,\"credentials\":{\"username\":\"testing\",\"password\":\"testing123\",\"merchantId\":\"496160873888\"},\"paymentTransactionId\":\"351525154795\",\"comment\":\"Dustin Paid Course Test CardConnect\",\"amount\":\"2000\",\"maskedCardNumber\":\"4788XXXXXXXX1443\",\"currencyType\":840,\"userId\":1646436}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://40.86.168.47:8082/paymentGateway/processRefund",
+							"protocol": "http",
+							"host": [
+								"40",
+								"86",
+								"168",
+								"47"
+							],
+							"port": "8082",
+							"path": [
+								"paymentGateway",
+								"processRefund"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Fri, 17 Dec 2021 20:13:26 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "237"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"detail\": {\n        \"success\": true,\n        \"refundTransactionId\": \"351525154795\",\n        \"statusCode\": 200,\n        \"gatewayHttpStatusCode\": 200,\n        \"responseMessage\": \"Successfully voided transaction.\",\n        \"merchantAccountId\": 67,\n        \"responseDetail\": \"Successfully voided transaction.\"\n    }\n}"
+				},
+				{
+					"name": "CardConnect Refund Failed Example 1",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "BVMeta",
+								"value": "{\"transactionId\": \"7c53a3c9-5be7-4480-bb9c-d4e21e495e85\", \"universityId\": 3245, \"userId\": 1749459}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"gatewayTypeId\":2,\"gatewayTypeName\":\"CardConnect\",\"merchantAccountId\":67,\"credentials\":{\"username\":\"testing\",\"password\":\"testing123\",\"merchantId\":\"496160873888\"},\"paymentTransactionId\":\"351525154795\",\"comment\":\"Dustin Paid Course Test CardConnect\",\"amount\":\"2000\",\"maskedCardNumber\":\"4788XXXXXXXX1443\",\"currencyType\":840,\"userId\":1646436}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://40.86.168.47:8082/paymentGateway/processRefund",
+							"protocol": "http",
+							"host": [
+								"40",
+								"86",
+								"168",
+								"47"
+							],
+							"port": "8082",
+							"path": [
+								"paymentGateway",
+								"processRefund"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Fri, 17 Dec 2021 20:13:46 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "234"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"detail\": {\n        \"success\": false,\n        \"refundTransactionId\": \"351531154827\",\n        \"statusCode\": 400,\n        \"gatewayHttpStatusCode\": 400,\n        \"responseMessage\": \"Refund failed. Txn not settled\",\n        \"merchantAccountId\": 67,\n        \"responseDetail\": \"Refund failed. Txn not settled\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "CardConnect Refund AUTH 401 Error (Bad Username)",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "BVMeta",
+						"value": "{\"transactionId\": \"7c53a3c9-5be7-4480-bb9c-d4e21e495e85\", \"universityId\": 3245, \"userId\": 1749459}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"gatewayTypeId\":2,\"gatewayTypeName\":\"CardConnect\",\"merchantAccountId\":67,\"credentials\":{\"username\":\"testin\",\"password\":\"testing123\",\"merchantId\":\"800000005052\"},\"paymentTransactionId\":\"351676754024\",\"comment\":\"Dustin Paid Course Test CardConnect\",\"amount\":\"2000\",\"maskedCardNumber\":\"4788XXXXXXXX1443\",\"currencyType\":840,\"userId\":1646436}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dev-svc.bluevolt.io:8443/paymentGateway/processRefund",
+					"protocol": "https",
+					"host": [
+						"dev-svc",
+						"bluevolt",
+						"io"
+					],
+					"port": "8443",
+					"path": [
+						"paymentGateway",
+						"processRefund"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "CardConnect Refund AUTH 401 Error (Bad Username) Example 1",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "BVMeta",
+								"value": "{\"transactionId\": \"7c53a3c9-5be7-4480-bb9c-d4e21e495e85\", \"universityId\": 3245, \"userId\": 1749459}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"gatewayTypeId\":2,\"gatewayTypeName\":\"CardConnect\",\"merchantAccountId\":67,\"credentials\":{\"username\":\"testin\",\"password\":\"testing123\",\"merchantId\":\"496160873888\"},\"paymentTransactionId\":\"351676754024\",\"comment\":\"Dustin Paid Course Test CardConnect\",\"amount\":\"2000\",\"maskedCardNumber\":\"4788XXXXXXXX1443\",\"currencyType\":840,\"userId\":1646436}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://40.86.168.47:8082/paymentGateway/processRefund",
+							"protocol": "http",
+							"host": [
+								"40",
+								"86",
+								"168",
+								"47"
+							],
+							"port": "8082",
+							"path": [
+								"paymentGateway",
+								"processRefund"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Fri, 17 Dec 2021 20:10:36 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "320"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"detail\": {\n        \"success\": false,\n        \"refundTransactionId\": null,\n        \"statusCode\": 401,\n        \"gatewayHttpStatusCode\": 401,\n        \"responseMessage\": \"There was an authorization error while accessing your previous payment status.\",\n        \"merchantAccountId\": 67,\n        \"responseDetail\": \"There was an authorization error while accessing your previous payment status.\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "CardConnect Refund AUTH 401 Error (Bad Password)",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "BVMeta",
+						"value": "{\"transactionId\": \"7c53a3c9-5be7-4480-bb9c-d4e21e495e85\", \"universityId\": 3245, \"userId\": 1749459}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"gatewayTypeId\":2,\"gatewayTypeName\":\"CardConnect\",\"merchantAccountId\":67,\"credentials\":{\"username\":\"testing\",\"password\":\"testing12\",\"merchantId\":\"800000005052\"},\"paymentTransactionId\":\"351676754024\",\"comment\":\"Dustin Paid Course Test CardConnect\",\"amount\":\"2000\",\"maskedCardNumber\":\"4788XXXXXXXX1443\",\"currencyType\":840,\"userId\":1646436}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dev-svc.bluevolt.io:8443/paymentGateway/processRefund",
+					"protocol": "https",
+					"host": [
+						"dev-svc",
+						"bluevolt",
+						"io"
+					],
+					"port": "8443",
+					"path": [
+						"paymentGateway",
+						"processRefund"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "CardConnect Refund AUTH 401 Error (Bad Password) Example 1",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "BVMeta",
+								"value": "{\"transactionId\": \"7c53a3c9-5be7-4480-bb9c-d4e21e495e85\", \"universityId\": 3245, \"userId\": 1749459}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"gatewayTypeId\":2,\"gatewayTypeName\":\"CardConnect\",\"merchantAccountId\":67,\"credentials\":{\"username\":\"testing\",\"password\":\"testing12\",\"merchantId\":\"496160873888\"},\"paymentTransactionId\":\"351676754024\",\"comment\":\"Dustin Paid Course Test CardConnect\",\"amount\":\"2000\",\"maskedCardNumber\":\"4788XXXXXXXX1443\",\"currencyType\":840,\"userId\":1646436}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://40.86.168.47:8082/paymentGateway/processRefund",
+							"protocol": "http",
+							"host": [
+								"40",
+								"86",
+								"168",
+								"47"
+							],
+							"port": "8082",
+							"path": [
+								"paymentGateway",
+								"processRefund"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Fri, 17 Dec 2021 20:10:09 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "320"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"detail\": {\n        \"success\": false,\n        \"refundTransactionId\": null,\n        \"statusCode\": 401,\n        \"gatewayHttpStatusCode\": 401,\n        \"responseMessage\": \"There was an authorization error while accessing your previous payment status.\",\n        \"merchantAccountId\": 67,\n        \"responseDetail\": \"There was an authorization error while accessing your previous payment status.\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "CardConnect Refund AUTH 401 Error (Bad MerchantId)",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "BVMeta",
+						"value": "{\"transactionId\": \"7c53a3c9-5be7-4480-bb9c-d4e21e495e85\", \"universityId\": 3245, \"userId\": 1749459}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"gatewayTypeId\":2,\"gatewayTypeName\":\"CardConnect\",\"merchantAccountId\":67,\"credentials\":{\"username\":\"testing\",\"password\":\"testing123\",\"merchantId\":\"80000000505\"},\"paymentTransactionId\":\"351676754024\",\"comment\":\"Dustin Paid Course Test CardConnect\",\"amount\":\"2000\",\"maskedCardNumber\":\"4788XXXXXXXX1443\",\"currencyType\":840,\"userId\":1646436}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dev-svc.bluevolt.io:8443/paymentGateway/processRefund",
+					"protocol": "https",
+					"host": [
+						"dev-svc",
+						"bluevolt",
+						"io"
+					],
+					"port": "8443",
+					"path": [
+						"paymentGateway",
+						"processRefund"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "CardConnect Refund AUTH 401 Error (Bad MerchantId) Example 1",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "BVMeta",
+								"value": "{\"transactionId\": \"7c53a3c9-5be7-4480-bb9c-d4e21e495e85\", \"universityId\": 3245, \"userId\": 1749459}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"gatewayTypeId\":2,\"gatewayTypeName\":\"CardConnect\",\"merchantAccountId\":67,\"credentials\":{\"username\":\"testing\",\"password\":\"testing123\",\"merchantId\":\"49616087388\"},\"paymentTransactionId\":\"351676754024\",\"comment\":\"Dustin Paid Course Test CardConnect\",\"amount\":\"2000\",\"maskedCardNumber\":\"4788XXXXXXXX1443\",\"currencyType\":840,\"userId\":1646436}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://40.86.168.47:8082/paymentGateway/processRefund",
+							"protocol": "http",
+							"host": [
+								"40",
+								"86",
+								"168",
+								"47"
+							],
+							"port": "8082",
+							"path": [
+								"paymentGateway",
+								"processRefund"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Fri, 17 Dec 2021 20:09:59 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "320"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"detail\": {\n        \"success\": false,\n        \"refundTransactionId\": null,\n        \"statusCode\": 401,\n        \"gatewayHttpStatusCode\": 401,\n        \"responseMessage\": \"There was an authorization error while accessing your previous payment status.\",\n        \"merchantAccountId\": 67,\n        \"responseDetail\": \"There was an authorization error while accessing your previous payment status.\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "CardConnect Verification Case 1",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "BVMeta",
+						"value": "{\"transactionId\": \"7c53a3c9-5be7-4480-bb9c-d4e21e495e85\", \"universityId\": 3245, \"userId\": 1749459}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"gatewayTypeId\":2,\"gatewayTypeName\":\"CardConnect\",\"merchantAccountId\":67,\"credentials\":{\"username\":\"testing\",\"password\":\"testing123\",\"merchantId\":\"800000005052\"},\"account\":\"4788250000121443\",\"expDate\":\"1025\",\"amount\":9.00,\"name\":\"Dustin Sale\",\"street\":\"1600 Allwood Ave\",\"city\":\"Murfreesboro\",\"state\":\"TN\",\"zip\":\"37128\",\"country\":\"US\",\"comment\":\"\",\"userName\":\"dustin.sale@bluevolt.com\",\"userId\":1646436,\"cvv2\":\"123\",\"currencyType\":840}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dev-svc.bluevolt.io:8443/paymentGateway/processPayment",
+					"protocol": "https",
+					"host": [
+						"dev-svc",
+						"bluevolt",
+						"io"
+					],
+					"port": "8443",
+					"path": [
+						"paymentGateway",
+						"processPayment"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "CardConnect Payment Approval Example 1",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "BVMeta",
+								"value": "{\"transactionId\": \"7c53a3c9-5be7-4480-bb9c-d4e21e495e85\", \"universityId\": 3245, \"userId\": 1749459}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"gatewayTypeId\":2,\"gatewayTypeName\":\"CardConnect\",\"merchantAccountId\":67,\"credentials\":{\"username\":\"testing\",\"password\":\"testing123\",\"merchantId\":\"496160873888\"},\"account\":\"4788250000121443\",\"expDate\":\"0225\",\"amount\":2000.00,\"name\":\"Dustin Sale\",\"street\":\"1600 Allwood Ave\",\"city\":\"Murfreesboro\",\"state\":\"TN\",\"zip\":\"37128\",\"country\":\"US\",\"comment\":\"\",\"userName\":\"dustin.sale@bluevolt.com\",\"userId\":1646436,\"cvv2\":\"123\",\"currencyType\":840}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://40.86.168.47:8082/paymentGateway/processPayment",
+							"protocol": "http",
+							"host": [
+								"40",
+								"86",
+								"168",
+								"47"
+							],
+							"port": "8082",
+							"path": [
+								"paymentGateway",
+								"processPayment"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Fri, 17 Dec 2021 20:12:50 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "190"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"detail\": {\n        \"success\": true,\n        \"paymentTransactionId\": \"351207054771\",\n        \"statusCode\": 200,\n        \"gatewayHttpStatusCode\": 200,\n        \"responseMessage\": \"Success.\",\n        \"merchantAccountId\": 67,\n        \"responseDetail\": \"Success.\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "CardConnect Verification Case 2",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "BVMeta",
+						"value": "{\"transactionId\": \"7c53a3c9-5be7-4480-bb9c-d4e21e495e85\", \"universityId\": 3245, \"userId\": 1749459}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"gatewayTypeId\":2,\"gatewayTypeName\":\"CardConnect\",\"merchantAccountId\":67,\"credentials\":{\"username\":\"testing\",\"password\":\"testing123\",\"merchantId\":\"800000005052\"},\"account\":\"4387751111111038\",\"expDate\":\"1025\",\"amount\":18.83,\"name\":\"Dustin Sale\",\"street\":\"1600 Allwood Ave\",\"city\":\"Murfreesboro\",\"state\":\"TN\",\"zip\":\"37128\",\"country\":\"US\",\"comment\":\"\",\"userName\":\"dustin.sale@bluevolt.com\",\"userId\":1646436,\"cvv2\":\"123\",\"currencyType\":840}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dev-svc.bluevolt.io:8443/paymentGateway/processPayment",
+					"protocol": "https",
+					"host": [
+						"dev-svc",
+						"bluevolt",
+						"io"
+					],
+					"port": "8443",
+					"path": [
+						"paymentGateway",
+						"processPayment"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "CardConnect Payment Approval Example 1",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "BVMeta",
+								"value": "{\"transactionId\": \"7c53a3c9-5be7-4480-bb9c-d4e21e495e85\", \"universityId\": 3245, \"userId\": 1749459}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"gatewayTypeId\":2,\"gatewayTypeName\":\"CardConnect\",\"merchantAccountId\":67,\"credentials\":{\"username\":\"testing\",\"password\":\"testing123\",\"merchantId\":\"496160873888\"},\"account\":\"4788250000121443\",\"expDate\":\"0225\",\"amount\":2000.00,\"name\":\"Dustin Sale\",\"street\":\"1600 Allwood Ave\",\"city\":\"Murfreesboro\",\"state\":\"TN\",\"zip\":\"37128\",\"country\":\"US\",\"comment\":\"\",\"userName\":\"dustin.sale@bluevolt.com\",\"userId\":1646436,\"cvv2\":\"123\",\"currencyType\":840}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://40.86.168.47:8082/paymentGateway/processPayment",
+							"protocol": "http",
+							"host": [
+								"40",
+								"86",
+								"168",
+								"47"
+							],
+							"port": "8082",
+							"path": [
+								"paymentGateway",
+								"processPayment"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Fri, 17 Dec 2021 20:12:50 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "190"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"detail\": {\n        \"success\": true,\n        \"paymentTransactionId\": \"351207054771\",\n        \"statusCode\": 200,\n        \"gatewayHttpStatusCode\": 200,\n        \"responseMessage\": \"Success.\",\n        \"merchantAccountId\": 67,\n        \"responseDetail\": \"Success.\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "CardConnect Verification Case 3",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "BVMeta",
+						"value": "{\"transactionId\": \"7c53a3c9-5be7-4480-bb9c-d4e21e495e85\", \"universityId\": 3245, \"userId\": 1749459}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"gatewayTypeId\":2,\"gatewayTypeName\":\"CardConnect\",\"merchantAccountId\":67,\"credentials\":{\"username\":\"testing\",\"password\":\"testing123\",\"merchantId\":\"800000005052\"},\"account\":\"5454545454545454\",\"expDate\":\"1025\",\"amount\":19.33,\"name\":\"Dustin Sale\",\"street\":\"1600 Allwood Ave\",\"city\":\"Murfreesboro\",\"state\":\"TN\",\"zip\":\"37128\",\"country\":\"US\",\"comment\":\"\",\"userName\":\"dustin.sale@bluevolt.com\",\"userId\":1646436,\"cvv2\":\"123\",\"currencyType\":840}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dev-svc.bluevolt.io:8443/paymentGateway/processPayment",
+					"protocol": "https",
+					"host": [
+						"dev-svc",
+						"bluevolt",
+						"io"
+					],
+					"port": "8443",
+					"path": [
+						"paymentGateway",
+						"processPayment"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "CardConnect Payment Approval Example 1",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "BVMeta",
+								"value": "{\"transactionId\": \"7c53a3c9-5be7-4480-bb9c-d4e21e495e85\", \"universityId\": 3245, \"userId\": 1749459}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"gatewayTypeId\":2,\"gatewayTypeName\":\"CardConnect\",\"merchantAccountId\":67,\"credentials\":{\"username\":\"testing\",\"password\":\"testing123\",\"merchantId\":\"496160873888\"},\"account\":\"4788250000121443\",\"expDate\":\"0225\",\"amount\":2000.00,\"name\":\"Dustin Sale\",\"street\":\"1600 Allwood Ave\",\"city\":\"Murfreesboro\",\"state\":\"TN\",\"zip\":\"37128\",\"country\":\"US\",\"comment\":\"\",\"userName\":\"dustin.sale@bluevolt.com\",\"userId\":1646436,\"cvv2\":\"123\",\"currencyType\":840}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://40.86.168.47:8082/paymentGateway/processPayment",
+							"protocol": "http",
+							"host": [
+								"40",
+								"86",
+								"168",
+								"47"
+							],
+							"port": "8082",
+							"path": [
+								"paymentGateway",
+								"processPayment"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Fri, 17 Dec 2021 20:12:50 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "190"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"detail\": {\n        \"success\": true,\n        \"paymentTransactionId\": \"351207054771\",\n        \"statusCode\": 200,\n        \"gatewayHttpStatusCode\": 200,\n        \"responseMessage\": \"Success.\",\n        \"merchantAccountId\": 67,\n        \"responseDetail\": \"Success.\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "CardConnect Verification Case 4",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "BVMeta",
+						"value": "{\"transactionId\": \"7c53a3c9-5be7-4480-bb9c-d4e21e495e85\", \"universityId\": 3245, \"userId\": 1749459}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"gatewayTypeId\":2,\"gatewayTypeName\":\"CardConnect\",\"merchantAccountId\":67,\"credentials\":{\"username\":\"testing\",\"password\":\"testing123\",\"merchantId\":\"800000005052\"},\"account\":\"5442981111111031\",\"expDate\":\"1025\",\"amount\":16.42,\"name\":\"Dustin Sale\",\"street\":\"1600 Allwood Ave\",\"city\":\"Murfreesboro\",\"state\":\"TN\",\"zip\":\"37128\",\"country\":\"US\",\"comment\":\"\",\"userName\":\"dustin.sale@bluevolt.com\",\"userId\":1646436,\"cvv2\":\"123\",\"currencyType\":840}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dev-svc.bluevolt.io:8443/paymentGateway/processPayment",
+					"protocol": "https",
+					"host": [
+						"dev-svc",
+						"bluevolt",
+						"io"
+					],
+					"port": "8443",
+					"path": [
+						"paymentGateway",
+						"processPayment"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "CardConnect Payment Approval Example 1",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "BVMeta",
+								"value": "{\"transactionId\": \"7c53a3c9-5be7-4480-bb9c-d4e21e495e85\", \"universityId\": 3245, \"userId\": 1749459}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"gatewayTypeId\":2,\"gatewayTypeName\":\"CardConnect\",\"merchantAccountId\":67,\"credentials\":{\"username\":\"testing\",\"password\":\"testing123\",\"merchantId\":\"496160873888\"},\"account\":\"4788250000121443\",\"expDate\":\"0225\",\"amount\":2000.00,\"name\":\"Dustin Sale\",\"street\":\"1600 Allwood Ave\",\"city\":\"Murfreesboro\",\"state\":\"TN\",\"zip\":\"37128\",\"country\":\"US\",\"comment\":\"\",\"userName\":\"dustin.sale@bluevolt.com\",\"userId\":1646436,\"cvv2\":\"123\",\"currencyType\":840}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://40.86.168.47:8082/paymentGateway/processPayment",
+							"protocol": "http",
+							"host": [
+								"40",
+								"86",
+								"168",
+								"47"
+							],
+							"port": "8082",
+							"path": [
+								"paymentGateway",
+								"processPayment"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Fri, 17 Dec 2021 20:12:50 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "190"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"detail\": {\n        \"success\": true,\n        \"paymentTransactionId\": \"351207054771\",\n        \"statusCode\": 200,\n        \"gatewayHttpStatusCode\": 200,\n        \"responseMessage\": \"Success.\",\n        \"merchantAccountId\": 67,\n        \"responseDetail\": \"Success.\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "CardConnect Verification Case 5",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "BVMeta",
+						"value": "{\"transactionId\": \"7c53a3c9-5be7-4480-bb9c-d4e21e495e85\", \"universityId\": 3245, \"userId\": 1749459}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"gatewayTypeId\":2,\"gatewayTypeName\":\"CardConnect\",\"merchantAccountId\":67,\"credentials\":{\"username\":\"testing\",\"password\":\"testing123\",\"merchantId\":\"800000005052\"},\"account\":\"6011009955000000\",\"expDate\":\"1025\",\"amount\":26.50,\"name\":\"Dustin Sale\",\"street\":\"1600 Allwood Ave\",\"city\":\"Murfreesboro\",\"state\":\"TN\",\"zip\":\"37128\",\"country\":\"US\",\"comment\":\"\",\"userName\":\"dustin.sale@bluevolt.com\",\"userId\":1646436,\"cvv2\":\"123\",\"currencyType\":840}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dev-svc.bluevolt.io:8443/paymentGateway/processPayment",
+					"protocol": "https",
+					"host": [
+						"dev-svc",
+						"bluevolt",
+						"io"
+					],
+					"port": "8443",
+					"path": [
+						"paymentGateway",
+						"processPayment"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "CardConnect Payment Approval Example 1",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "BVMeta",
+								"value": "{\"transactionId\": \"7c53a3c9-5be7-4480-bb9c-d4e21e495e85\", \"universityId\": 3245, \"userId\": 1749459}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"gatewayTypeId\":2,\"gatewayTypeName\":\"CardConnect\",\"merchantAccountId\":67,\"credentials\":{\"username\":\"testing\",\"password\":\"testing123\",\"merchantId\":\"496160873888\"},\"account\":\"4788250000121443\",\"expDate\":\"0225\",\"amount\":2000.00,\"name\":\"Dustin Sale\",\"street\":\"1600 Allwood Ave\",\"city\":\"Murfreesboro\",\"state\":\"TN\",\"zip\":\"37128\",\"country\":\"US\",\"comment\":\"\",\"userName\":\"dustin.sale@bluevolt.com\",\"userId\":1646436,\"cvv2\":\"123\",\"currencyType\":840}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://40.86.168.47:8082/paymentGateway/processPayment",
+							"protocol": "http",
+							"host": [
+								"40",
+								"86",
+								"168",
+								"47"
+							],
+							"port": "8082",
+							"path": [
+								"paymentGateway",
+								"processPayment"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Fri, 17 Dec 2021 20:12:50 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "190"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"detail\": {\n        \"success\": true,\n        \"paymentTransactionId\": \"351207054771\",\n        \"statusCode\": 200,\n        \"gatewayHttpStatusCode\": 200,\n        \"responseMessage\": \"Success.\",\n        \"merchantAccountId\": 67,\n        \"responseDetail\": \"Success.\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "CardConnect Verification Case 6",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "BVMeta",
+						"value": "{\"transactionId\": \"7c53a3c9-5be7-4480-bb9c-d4e21e495e85\", \"universityId\": 3245, \"userId\": 1749459}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"gatewayTypeId\":2,\"gatewayTypeName\":\"CardConnect\",\"merchantAccountId\":67,\"credentials\":{\"username\":\"testing\",\"password\":\"testing123\",\"merchantId\":\"800000005052\"},\"account\":\"6011000995511130\",\"expDate\":\"1025\",\"amount\":18.63,\"name\":\"Dustin Sale\",\"street\":\"1600 Allwood Ave\",\"city\":\"Murfreesboro\",\"state\":\"TN\",\"zip\":\"37128\",\"country\":\"US\",\"comment\":\"\",\"userName\":\"dustin.sale@bluevolt.com\",\"userId\":1646436,\"cvv2\":\"123\",\"currencyType\":840}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dev-svc.bluevolt.io:8443/paymentGateway/processPayment",
+					"protocol": "https",
+					"host": [
+						"dev-svc",
+						"bluevolt",
+						"io"
+					],
+					"port": "8443",
+					"path": [
+						"paymentGateway",
+						"processPayment"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "CardConnect Payment Approval Example 1",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "BVMeta",
+								"value": "{\"transactionId\": \"7c53a3c9-5be7-4480-bb9c-d4e21e495e85\", \"universityId\": 3245, \"userId\": 1749459}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"gatewayTypeId\":2,\"gatewayTypeName\":\"CardConnect\",\"merchantAccountId\":67,\"credentials\":{\"username\":\"testing\",\"password\":\"testing123\",\"merchantId\":\"496160873888\"},\"account\":\"4788250000121443\",\"expDate\":\"0225\",\"amount\":2000.00,\"name\":\"Dustin Sale\",\"street\":\"1600 Allwood Ave\",\"city\":\"Murfreesboro\",\"state\":\"TN\",\"zip\":\"37128\",\"country\":\"US\",\"comment\":\"\",\"userName\":\"dustin.sale@bluevolt.com\",\"userId\":1646436,\"cvv2\":\"123\",\"currencyType\":840}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://40.86.168.47:8082/paymentGateway/processPayment",
+							"protocol": "http",
+							"host": [
+								"40",
+								"86",
+								"168",
+								"47"
+							],
+							"port": "8082",
+							"path": [
+								"paymentGateway",
+								"processPayment"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Fri, 17 Dec 2021 20:12:50 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "190"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"detail\": {\n        \"success\": true,\n        \"paymentTransactionId\": \"351207054771\",\n        \"statusCode\": 200,\n        \"gatewayHttpStatusCode\": 200,\n        \"responseMessage\": \"Success.\",\n        \"merchantAccountId\": 67,\n        \"responseDetail\": \"Success.\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "CardConnect Verification Case 7",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "BVMeta",
+						"value": "{\"transactionId\": \"7c53a3c9-5be7-4480-bb9c-d4e21e495e85\", \"universityId\": 3245, \"userId\": 1749459}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"gatewayTypeId\":2,\"gatewayTypeName\":\"CardConnect\",\"merchantAccountId\":67,\"credentials\":{\"username\":\"testing\",\"password\":\"testing123\",\"merchantId\":\"800000005052\"},\"account\":\"371449635398431\",\"expDate\":\"1025\",\"amount\":13.85,\"name\":\"Dustin Sale\",\"street\":\"1600 Allwood Ave\",\"city\":\"Murfreesboro\",\"state\":\"TN\",\"zip\":\"37128\",\"country\":\"US\",\"comment\":\"\",\"userName\":\"dustin.sale@bluevolt.com\",\"userId\":1646436,\"cvv2\":\"123\",\"currencyType\":840}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dev-svc.bluevolt.io:8443/paymentGateway/processPayment",
+					"protocol": "https",
+					"host": [
+						"dev-svc",
+						"bluevolt",
+						"io"
+					],
+					"port": "8443",
+					"path": [
+						"paymentGateway",
+						"processPayment"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "CardConnect Payment Approval Example 1",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "BVMeta",
+								"value": "{\"transactionId\": \"7c53a3c9-5be7-4480-bb9c-d4e21e495e85\", \"universityId\": 3245, \"userId\": 1749459}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"gatewayTypeId\":2,\"gatewayTypeName\":\"CardConnect\",\"merchantAccountId\":67,\"credentials\":{\"username\":\"testing\",\"password\":\"testing123\",\"merchantId\":\"496160873888\"},\"account\":\"4788250000121443\",\"expDate\":\"0225\",\"amount\":2000.00,\"name\":\"Dustin Sale\",\"street\":\"1600 Allwood Ave\",\"city\":\"Murfreesboro\",\"state\":\"TN\",\"zip\":\"37128\",\"country\":\"US\",\"comment\":\"\",\"userName\":\"dustin.sale@bluevolt.com\",\"userId\":1646436,\"cvv2\":\"123\",\"currencyType\":840}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://40.86.168.47:8082/paymentGateway/processPayment",
+							"protocol": "http",
+							"host": [
+								"40",
+								"86",
+								"168",
+								"47"
+							],
+							"port": "8082",
+							"path": [
+								"paymentGateway",
+								"processPayment"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Fri, 17 Dec 2021 20:12:50 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "190"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"detail\": {\n        \"success\": true,\n        \"paymentTransactionId\": \"351207054771\",\n        \"statusCode\": 200,\n        \"gatewayHttpStatusCode\": 200,\n        \"responseMessage\": \"Success.\",\n        \"merchantAccountId\": 67,\n        \"responseDetail\": \"Success.\"\n    }\n}"
+				}
+			]
+		}
+	]
+}
