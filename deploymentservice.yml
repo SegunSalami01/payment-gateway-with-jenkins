@@ -45,6 +45,25 @@ spec:
         - name: bvdevcr-secret
 
 ---
+kind: Ingress
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: payment-gateway-ingress
+  namespace: test
+spec:
+  rules:
+    - host: dev-paymentgw.privatelink.blob.core.windows.net
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: payment-gateway-service
+                port:
+                  number: 8082
+status:
+  loadBalancer: {}
 # apiVersion: networking.k8s.io/v1beta1
 # apiVersion: extensions/v1beta1
 # kind: Ingress
