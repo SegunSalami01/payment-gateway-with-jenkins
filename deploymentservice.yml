@@ -19,7 +19,7 @@ spec:
         app: payment-gateway
     spec:
       containers:
-      - image: ooyekanmi/payment-gateway
+      - image: ssalami/payment-gateway
         name: payment-gateway
         resources: {}
 status: {}
