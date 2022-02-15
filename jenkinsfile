@@ -1,7 +1,7 @@
 pipeline {
 
   environment {
-    dockerimagename = "ooyekanmi/payment-gateway"
+    dockerimagename = "ssalami/payment-gateway"
     dockerImage = ""
   }
 
@@ -11,7 +11,7 @@ pipeline {
 
     stage('Checkout Source') {
       steps {
-        git 'https://github.com/Olufemi-Oyekanmi/payment-gateway-with-jenkins.git'
+        git 'https://github.com/SegunSalami01/payment-gateway-with-jenkins.git'
       }
     }
 
