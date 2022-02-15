@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: payment-service-deployment
+  name: payment-service-deployment
+  namespace: test
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: payment-gateway
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: payment-gateway
+    spec:
+      containers:
+      - image: ooyekanmi/payment-gateway
+        name: payment-gateway
+        resources: {}
+status: {}
