@@ -52,7 +52,6 @@ metadata:
     kubernetes.io/ssl-redirect: "false"
   name: payment-gateway-ingress
   namespace: test
-
 spec:
   rules:
   - host: dev-paymentgw.privatelink.blob.core.windows.net
