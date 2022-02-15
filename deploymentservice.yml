@@ -34,7 +34,7 @@ spec:
         - "logger.bluevolt.local"
       containers:
       - name: payment-gateway
-        image: 'bvdevdocker.azurecr.io/dev/payment-gateway:0.1.1'
+        image: 'bvdevdocker.azurecr.io/dev/payment-gateway:latest'
         imagePullPolicy: Always
         ports:
         - containerPort: 8082
