@@ -19,7 +19,7 @@ COPY config/etc/supervisord.conf /etc/supervisord.conf
 COPY microservice/main.py /home/bvadmin
 COPY microservice/schema.py /home/bvadmin
 RUN mkdir /home/bvadmin/gateways
-COPY microservice/gateways/*.py /home/bvadmin/gateways
+COPY microservice/gateways/*.py /home/bvadmin/gateways/
 RUN chown bvadmin:bvadmin /home/bvadmin/main.py
 RUN su - bvadmin -c "cd /home/bvadmin && python3 -m venv venv"
 RUN su - bvadmin -c "cd /home/bvadmin && source venv/bin/activate && pip3 install wheel"
