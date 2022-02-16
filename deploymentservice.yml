@@ -16,7 +16,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: payment-gateway-service
+  name: payment-gateway-deployment
   namespace: test
 spec:
   replicas: 2
