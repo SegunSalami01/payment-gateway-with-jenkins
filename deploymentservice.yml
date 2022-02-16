@@ -52,7 +52,7 @@ metadata:
   namespace: test
 spec:
   rules:
-    - host: dev-paymentgw.privatelink.blob.core.windows.net
+    - host: test.privatelink.blob.core.windows.net
       http:
         paths:
           - path: /
