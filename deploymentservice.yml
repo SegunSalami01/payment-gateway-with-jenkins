@@ -16,7 +16,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: payment-gateway-deployment
+  name: payment-gateway-service
   namespace: test
 spec:
   replicas: 2
@@ -45,43 +45,24 @@ spec:
         - name: bvdevcr-secret
 
 ---
-kind: Ingress
 apiVersion: networking.k8s.io/v1
+kind: Ingress
 metadata:
+  annotations:
+    kubernetes.io/ssl-redirect: "false"
   name: payment-gateway-ingress
   namespace: test
+
 spec:
   rules:
-    - host: test-paymentgw.privatelink.blob.core.windows.net
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: payment-gateway-service
-                port:
-                  number: 8082
-status:
-  loadBalancer: {}
-# apiVersion: networking.k8s.io/v1beta1
-# apiVersion: extensions/v1beta1
-# kind: Ingress
-# metadata:
-#   annotations:
-#     kubernetes.io/ssl-redirect: "false"
-#   name: payment-gateway-ingress
-#   namespace: test
-# spec:
-#   rules:
-#   - host: dev-paymentgw.privatelink.blob.core.windows.net
-#     http:
-#       paths:
-#       - path: /
-#         pathType: Prefix
-#         backend:
-#           service:
-#             name: payment-gateway-service
-#             port:
-#               number: 8082
+  - host: test-paymentgw.privatelink.blob.core.windows.net
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: payment-gateway-service
+            port:
+              number: 8082
 ---
