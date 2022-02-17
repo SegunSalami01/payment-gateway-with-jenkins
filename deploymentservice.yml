@@ -34,7 +34,7 @@ spec:
         - "logger.bluevolt.local"
       containers:
       - name: payment-gateway
-        image: 'bvdevdocker.azurecr.io/dev/payment-gateway:latest'
+        image: 'bvdevdocker.azurecr.io/dev/payment-gateway:0.1.1'
         imagePullPolicy: Always
         ports:
         - containerPort: 8082
@@ -46,7 +46,7 @@ spec:
 
 ---
 kind: Ingress
-apiVersion: networking.k8s.io/v1
+apiVersion: extensions/v1beta1
 metadata:
   name: payment-gateway-ingress
   namespace: test
