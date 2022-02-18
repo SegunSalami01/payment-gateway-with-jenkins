@@ -46,7 +46,6 @@ spec:
   
   
   
-# apiVersion: networking.k8s.io/v1
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
@@ -54,7 +53,6 @@ metadata:
     kubernetes.io/ssl-redirect: "false"
   name: payment-gateway-ingress
   namespace: test
-
 spec:
   rules:
   - host: test-paymentgw.privatelink.blob.core.windows.net
