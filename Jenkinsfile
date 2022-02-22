@@ -4,6 +4,7 @@ stage ("Deploy") {
             sh """
                  kustomize apply -k .
                """
+               
         }
     }
 }
