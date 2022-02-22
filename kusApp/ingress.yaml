@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ssl-redirect: "false"
+  name: payment-gateway-ingress
+  namespace: blue-green
+spec:
+  rules:
+  - host: test-paymentgw.privatelink.blob.core.windows.net
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: payment-gateway-service
+            port:
+              number: 8082
