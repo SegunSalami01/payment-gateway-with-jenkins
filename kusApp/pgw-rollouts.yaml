@@ -1,0 +1,35 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: payment-gw-ro
+  namespace: blue-green
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: payment-gateway
+  template:
+    metadata:
+      labels:
+        app: payment-gateway
+    spec:
+        hostAliases:
+        - ip: "10.1.65.7"
+          hostnames:
+          - "logger.bluevolt.local"
+        containers:
+        - name: payment-gateway
+          image: 'bvdevdocker.azurecr.io/dev/payment-gateway:latest'
+          imagePullPolicy: Always
+          ports:
+          - containerPort: 8082
+          env:
+          - name: CARDCONNECT_HOSTNAME
+            value: "fts-uat.cardconnect.com"
+        imagePullSecrets:
+          - name: bvdevcr-secret    
+  strategy:
+    blueGreen:
+      activeService: payment-gateway-service-active
+      previewService: payment-gateway-service-preview
+      autoPromotionEnabled: false
