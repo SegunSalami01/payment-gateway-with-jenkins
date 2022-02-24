@@ -16,7 +16,7 @@ configurations:
  
 resources:
   - namespace.yaml
-  #- secret.yaml
+  - secret.yaml
   - ingress.yaml
   # - pgw-rollouts.yaml
   #- pgw-canary.yaml
