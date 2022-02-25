@@ -3,8 +3,7 @@ pipeline {
   environment {
     dockerimagename = "bvdevdocker.azurecr.io/dev/payment-gateway"
     dockerImage = ""
-    KUBE_NAMESPACE= "blue-green"
-//     DOCKER_TAG = "1.1.0"
+    NAMESPACE = getNamespace()
     DOCKER_TAG = getDockerTag()
   }
 
@@ -71,4 +70,10 @@ def getDockerTag(){
   def props = readProperties file: 'config.toml'
    def DOCKER_TAG = props['DOCKER_VERSION']
   return DOCKER_TAG
+}
+
+def getNamespace(){
+  def props = readProperties file: 'config.toml'
+  def NAMESPACE = props['NAMESPACE']
+  return NAMESPACE
 }
