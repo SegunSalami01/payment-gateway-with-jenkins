@@ -1,7 +1,7 @@
 pipeline {
 
   environment {
-    dockerimagename = "bvdevdocker.azurecr.io/dev/payment-gateway:1.1.0"
+    dockerimagename = "bvdevdocker.azurecr.io/dev/payment-gateway"
     dockerImage = ""
     NAMESPACE = getNamespace()
     DOCKER_TAG = getDockerTag()
