@@ -1,0 +1,3 @@
+[env]
+    NAMESPACE = 'blue-green'
+    DOCKER_VERSION = '1.1.0'
