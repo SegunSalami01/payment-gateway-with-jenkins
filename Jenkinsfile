@@ -18,20 +18,14 @@ pipeline {
     }
 
  
-
-//     stage('Build image') {
-//       steps{
-//         script {
-//           dockerImage = docker.build('dockerimagename:${DOCKER_TAG}')
-//         }
-//       }
-//     }
-    stage('Build Image'){
+    stage('Build image') {
       steps{
-        'sh docker build . -t dockerimagename:${DOCKER_TAG}'
+        script {
+          dockerImage = docker.build('dockerimagename:1.1.0')
+        }
       }
     }
-
+    
     stage('Pushing Image') {
       environment {
                registryCredential = 'acr_credentials'
