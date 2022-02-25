@@ -19,12 +19,16 @@ pipeline {
 
  
 
-    stage('Build image') {
+//     stage('Build image') {
+//       steps{
+//         script {
+//           dockerImage = docker.build('dockerimagename:${DOCKER_TAG}')
+//         }
+//       }
+//     }
+    stage('Build Image'){
       steps{
-        script {
-          dockerImage = docker.build('dockerimagename:${DOCKER_TAG}')
-//           docker.build("my-image:${env.BUILD_ID}")
-        }
+        'sh docker build . -t dockerimagename:${DOCKER_TAG}'
       }
     }
 
