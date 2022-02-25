@@ -1,7 +1,7 @@
 pipeline {
 
   environment {
-    dockerimagename = "bvdevdocker.azurecr.io/dev/payment-gateway"
+    dockerimagename = "bvdevdocker.azurecr.io/dev/payment-gateway:1.1.0"
     dockerImage = ""
     NAMESPACE = getNamespace()
     DOCKER_TAG = getDockerTag()
@@ -21,7 +21,7 @@ pipeline {
     stage('Build image') {
       steps{
         script {
-          dockerImage = docker.build dockerimagename -t DOCKER_TAG
+          dockerImage = docker.build dockerimagename
         }
       }
     }
