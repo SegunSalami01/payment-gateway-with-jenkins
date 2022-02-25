@@ -4,7 +4,8 @@ pipeline {
     dockerimagename = "bvdevdocker.azurecr.io/dev/payment-gateway"
     dockerImage = ""
     KUBE_NAMESPACE= "blue-green"
-    DOCKER_TAG = "1.1.0"
+//     DOCKER_TAG = "1.1.0"
+    DOCKER_TAG = getDockerTag()
   }
 
   agent any
@@ -64,4 +65,11 @@ pipeline {
 
   }
 
+}
+
+def getDockerTag(){
+  def props = readProperties file: 'abc.toml'
+   def SVC_VERSION = props['SVC_VERSION']
+
+   echo "SVC_VERSION = ${SVC_VERSION}"
 }
