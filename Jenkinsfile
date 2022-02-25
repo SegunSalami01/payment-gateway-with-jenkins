@@ -68,8 +68,7 @@ pipeline {
 }
 
 def getDockerTag(){
-  def props = readProperties file: 'abc.toml'
-   def SVC_VERSION = props['SVC_VERSION']
-
-   echo "SVC_VERSION = ${SVC_VERSION}"
+  def props = readProperties file: 'config.toml'
+   def DOCKER_TAG = props['DOCKER_TAG']
+  return DOCKER_TAG
 }
