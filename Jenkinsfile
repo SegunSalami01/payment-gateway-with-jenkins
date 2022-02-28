@@ -10,11 +10,22 @@ pipeline {
   agent any
 
   stages {
+    
+    
 
     stage('Checkout Source') {
       steps {
         git 'https://github.com/SegunSalami01/payment-gateway-with-jenkins.git'
       }
+    }
+    
+
+    stage('Nginx') {
+        when { changeset "version/*"}
+        steps {
+            sh "make build-nginx"
+            sh "make start-nginx"
+        }
     }
 
  
@@ -45,7 +56,6 @@ pipeline {
         sh "chmod +x changeTag.sh"
         sh "./changeTag.sh ${DOCKER_TAG}"
         sshagent(['automation-machine']) {
-          sh ' ssh bvadmin@52.158.245.71 "cat /home/bvadmin/config.toml" | diff - config.toml'
           sh "scp -o StrictHostKeyChecking=no config.toml canary-rollout.yml kustomization.yaml ingress.yaml secret.yaml service-active.yaml service-preview.yaml namespace.yaml bvadmin@52.158.245.71:/home/bvadmin"
           script{
             try{
