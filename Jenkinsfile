@@ -9,8 +9,10 @@ pipeline {
 
   agent any
 
-  stages {
-    
+  stages 
+  when { changeset "version/*"}
+  {
+     
     
 
     stage('Checkout Source') {
