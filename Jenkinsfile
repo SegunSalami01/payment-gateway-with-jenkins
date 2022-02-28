@@ -45,7 +45,7 @@ pipeline {
         sh "chmod +x changeTag.sh"
         sh "./changeTag.sh ${DOCKER_TAG}"
         sshagent(['automation-machine']) {
-          sh ' ssh bvadmin@52.158.245.71 "cat /home/bvadmin/config.toml" | diff  - config.toml'
+          sh ' ssh bvadmin@52.158.245.71 "cat /home/bvadmin/config.toml" | diff /home/bvadmin/config.toml config.toml if [ $? -ne 0 ]; then echo "The directory was modified"; fi'
           sh "scp -o StrictHostKeyChecking=no config.toml canary-rollout.yml kustomization.yaml ingress.yaml secret.yaml service-active.yaml service-preview.yaml namespace.yaml bvadmin@52.158.245.71:/home/bvadmin"
           script{
             try{
