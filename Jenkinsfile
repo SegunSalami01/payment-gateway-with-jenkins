@@ -10,8 +10,8 @@ pipeline {
   agent any
 
   stages 
-  when { changeset "version/*"}
   {
+    when { changeset "version/*"}{
      
     
 
@@ -75,6 +75,7 @@ pipeline {
 
 
 
+  }
   }
 
 }
