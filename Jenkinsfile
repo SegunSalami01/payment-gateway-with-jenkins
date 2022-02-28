@@ -11,11 +11,8 @@ pipeline {
 
   stages 
   {
-    when { changeset "version/*"}{
-     
-    
-
     stage('Checkout Source') {
+      when { changeset "version/*"}
       steps {
         git 'https://github.com/SegunSalami01/payment-gateway-with-jenkins.git'
       }
@@ -32,6 +29,7 @@ pipeline {
 
  
     stage('Build image') {
+      when { changeset "version/*"}
       steps{
         script {
           dockerImage = docker.build dockerimagename
@@ -41,6 +39,7 @@ pipeline {
     }
     
     stage('Pushing Image') {
+      when { changeset "version/*"}
       environment {
                registryCredential = 'acr_credentials'
            }
@@ -54,6 +53,7 @@ pipeline {
     }
 
     stage('Deploy to k8s'){
+      when { changeset "version/*"}
       steps{
         sh "chmod +x changeTag.sh"
         sh "./changeTag.sh ${DOCKER_TAG}"
@@ -76,7 +76,7 @@ pipeline {
 
 
   }
-  }
+  
 
 }
 
