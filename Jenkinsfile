@@ -45,7 +45,7 @@ pipeline {
         sh "chmod +x changeTag.sh"
         sh "./changeTag.sh ${DOCKER_TAG}"
         sshagent(['automation-machine']) {
-          sh "scp -o StrictHostKeyChecking=no changeTag.sh canary-rollout.yml kustomization.yaml ingress.yaml secret.yaml service-active.yaml service-preview.yaml namespace.yaml bvadmin@52.158.245.71:/home/bvadmin"
+          sh "scp -o StrictHostKeyChecking=no config.toml canary-rollout.yml kustomization.yaml ingress.yaml secret.yaml service-active.yaml service-preview.yaml namespace.yaml bvadmin@52.158.245.71:/home/bvadmin"
           script{
             try{
               sh "ssh bvadmin@52.158.245.71 kubectl apply -k ."
