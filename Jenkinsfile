@@ -12,22 +12,12 @@ pipeline {
   stages 
   {
     stage('Checkout Source') {
-      when { changeset "version/*"}
+      when { changeset "kusApp/*"}
       steps {
         git 'https://github.com/SegunSalami01/payment-gateway-with-jenkins.git'
       }
     }
     
-
-    stage('Nginx') {
-        when { changeset "version/*"}
-        steps {
-            sh "make build-nginx"
-            sh "make start-nginx"
-        }
-    }
-
- 
     stage('Build image') {
       when { changeset "version/*"}
       steps{
